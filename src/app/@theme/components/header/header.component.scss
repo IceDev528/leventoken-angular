@@ -1,0 +1,60 @@
+button.common-btn {
+  background: transparent linear-gradient(103deg, #342CD7 0%, #BF38E6 100%) 0% 0% no-repeat padding-box;
+  border-radius: 26px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  padding: 10px 22px;
+}
+
+button.btn.common-btn {
+  cursor: pointer;
+}
+/* header-style-start */
+
+.leven-header {
+  box-shadow: 0px 4px 8px #00000014;
+  position: relative;
+}
+
+.img-brand img {
+  width: 100%;
+  max-width: 150px;
+}
+
+.leaves-ul ul li {
+  letter-spacing: 0px;
+  padding-right: 14px;
+  font-size: 15px;
+  line-height: 18px;
+  color: #606060;
+}
+
+.leaves-ul ul li a.active {
+  color: unset;
+}
+span.name-profile {
+  width: 55px;
+  height: 55px;
+  background: #eee;
+  display: inline-block;
+  line-height: 55px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+}
+.nav-link {
+  cursor: pointer;
+}
+.social-icon a{
+  display: flex;
+}
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* header-style-end */

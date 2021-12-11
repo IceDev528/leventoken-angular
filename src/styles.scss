@@ -1,0 +1,930 @@
+// @import "src/app/@theme/styles/themes.scss";
+
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* common-style--section-start */
+
+body {
+    font-family: "Montserrat", sans-serif !important;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3{
+  font-size: 38px;
+  letter-spacing: 1.5px;
+  color: #202020;
+  line-height: 60px;
+  font-weight: bold;
+}
+p{
+    font-size: 16px;
+    letter-spacing: 0.72px;
+    line-height: 25px;
+    font-weight: 500;
+    color: #606060;
+}
+button.common-btn {
+    background: transparent linear-gradient(103deg, #342CD7 0%, #BF38E6 100%) 0% 0% no-repeat padding-box;
+    border-radius: 26px;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0;
+    color: #ffffff;
+    padding: 10px 35px;
+    pointer-events: inherit;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+button.common-btn:hover {
+    color: #fff;
+}
+
+.btn:not(:disabled):not(.disabled).active,
+.btn:not(:disabled):not(.disabled):active {
+    background-image: transparent linear-gradient(103deg, #342CD7 0%, #BF38E6 100%) 0% 0% no-repeat padding-box !important;
+}
+
+.dister-token h1 {
+    letter-spacing: 1.5px;
+    color: #202020;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 66px;
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+}
+
+.dister-token h1:after {
+    content: " ";
+    border-bottom: 4px solid #BF38E6;
+    display: block;
+    width: 100%;
+    max-width: 221px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+
+/* common-style-section-end */
+
+
+/*banner-the-ultimate-crosse-chain-section-start */
+
+.crose-chain {
+    background-image: url('./assets/images/hero_sec_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 100%;
+    height: 960px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.diamond-boundary {
+    text-align: end;
+}
+
+.diamond-boundary img {
+    width: 100%;
+}
+
+.nft-btn h1 {
+    text-align: left;
+    font-size: 38px;
+    letter-spacing: 1.5px;
+    color: #202020;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.nft-btn p {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 0.72px;
+    line-height: 25px;
+    font-weight: 500;
+    color: #606060;
+}
+
+.nft-buttonn .butoon-transparent {
+    border: 1px solid #BF38E6;
+    font-size: 14px;
+    color: #BF38E6;
+    padding: 6px 31px;
+    margin-left: 14px;
+}
+
+.time-days {
+    right: 0;
+    top: 40%;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+.days-hors strong {
+    letter-spacing: 2.8px;
+    color: #181f32;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.days-hors p {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.26px;
+    color: #BF38E6;
+    margin-left: 12px;
+}
+
+
+/*banner-the-ultimate-crosse-chain-section-end */
+
+
+/* token-of-of-the-leaven-section-start */
+
+.levaen-ecosystem img {
+    width: 100%;
+    max-width: 450px;
+}
+
+.liquidity-trade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.ecosystem-native span {
+    text-align: left;
+    font-size: 36px;
+    color: #BF38E6;
+}
+
+.ecosystem-native h1 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: 1.2px;
+    color: #202020;
+}
+
+.ecosystem-native p {
+    text-align: left;
+    line-height: 25px;
+    font-size: 14px;
+    letter-spacing: 0.54px;
+    color: #606060;
+}
+
+
+/* token-of-of-the-leaven-section-start */
+
+
+/*token-trade-with-doller-section-start */
+
+.trade-price {
+    padding-bottom: 100px;
+}
+
+.levaen-doller {
+    text-align: center;
+}
+
+.levaen-doller img {
+    width: 100%;
+    max-width: 556px;
+}
+
+.ecosystem-native h4 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.72px;
+    line-height: 66px;
+    color: #000000;
+}
+
+
+/*token-trade-with-doller-section-end */
+
+
+/*leaven-token-sllle-section-start*/
+
+.salle-token {
+    background: #FBFBFB 0% 0% no-repeat padding-box;
+    padding-bottom: 86px;
+    margin-bottom: 80px;
+}
+
+.token-detail {
+    box-shadow: 0px 0px 6px #00000033;
+    border-radius: 20px;
+}
+
+.token-detail h3 {
+    text-align: center;
+    font-weight: bold;
+    line-height: 70px;
+    font-size: 20px;
+    letter-spacing: 0.72px;
+    color: #202020;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+.sale-heading li {
+    letter-spacing: 0.6px;
+    color: #606060;
+    font-size: 14px;
+    line-height: 60px;
+}
+
+.list-item ul {
+    list-style: none;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.list-item .left-li li {
+    border-right: none;
+    padding-left: 40px;
+}
+
+.list-item .right-li li {
+    border-left: none;
+    padding-left: 0px;
+    font-weight: 700;
+}
+
+.list-item {
+    width: 100%;
+}
+
+.li-color {
+    background-color: #fff;
+}
+
+.circle-timing img {
+    width: 100%;
+    max-width: 426px;
+}
+
+.circle-timing {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* leaven-token-sllle-section-end */
+
+
+/*distribution-of-token-section-start */
+
+.circle-percentage {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    background: transparent;
+    border: 18px solid;
+    border-top: 18px solid blue;
+}
+
+.circle-percentage strong {
+    right: 25px;
+    top: 33px;
+}
+
+
+/*distribution-of-token-section-start*/
+
+
+/* circle */
+
+.set-size {
+    font-size: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.charts-container:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.pie-wrapper {
+    height: 120px;
+    width: 120px;
+    margin: 15px;
+    position: relative;
+}
+
+.pie-wrapper:nth-child(3n+1) {
+    clear: both;
+}
+
+.pie-wrapper .pie {
+    height: 100%;
+    width: 100%;
+    clip: rect(0, 1em, 1em, 0.5em);
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.pie-wrapper .pie .half-circle {
+    height: 95%;
+    width: 95%;
+    border: 0.1em solid #3498db;
+    border-radius: 50%;
+    clip: rect(0, 0.5em, 1em, 0);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(80deg) !important;
+}
+
+.pie-wrapper .label {
+    background: #34495e;
+    border-radius: 50%;
+    bottom: 20px;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: 20px;
+    left: 20px;
+    line-height: 3.8;
+    position: absolute;
+    font-weight: bold;
+    right: 20px;
+    text-align: center;
+    top: 20px;
+    box-shadow: 0px 0px 6px #00000029;
+}
+
+.pie-wrapper .label .smaller {
+    color: #bdc3c7;
+    font-size: 0.45em;
+    padding-bottom: 20px;
+    vertical-align: super;
+}
+
+.pie-wrapper .shadoow {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 20px #0000001a;
+}
+
+.pie-wrapper.style-2 .label {
+    background: none;
+    color: #7f8c8d;
+}
+
+.pie-wrapper.style-2 .label .smaller {
+    color: #bdc3c7;
+}
+
+.pie-wrapper.progress-20 .pie .half-circle {
+    border-color: #29becd;
+}
+
+.pie-wrapper.progress-20 .label {
+    color: #29becd;
+}
+
+.pie-wrapper.progress-25 .label {
+    color: #175670;
+}
+
+.pie-wrapper.progress-5.color-orange .label {
+    color: #F68D2F;
+}
+
+.pie-wrapper.progress-3 .label {
+    color: #EE4657;
+}
+
+.pie-wrapper.progress-12 .label {
+    color: #F1B31C;
+}
+
+.pie-wrapper.progress-5 .label {
+    color: #1A608D;
+}
+
+.pie-wrapper.progress-30 .label {
+    color: #D94142;
+}
+
+.pie-wrapper.progress-50 .label {
+    color: #175670;
+}
+
+.pie-wrapper.progress-20 .pie .left-side {
+    transform: translate(-50%, -50%) rotate(60deg) !important;
+}
+
+.pie-wrapper.progress-20 .pie .right-side {
+    display: none;
+}
+
+.pie-wrapper.progress-5 .pie .half-circle {
+    border-color: #f68d2f;
+}
+
+.pie-wrapper.progress-25 .pie .half-circle {
+    border-color: #175670;
+}
+
+.pie-wrapper.progress-5 .pie .left-side {
+    transform: translate(-50%, -50%) rotate(27deg) !important;
+}
+
+.pie-wrapper.progress-3 .pie .half-circle {
+    border-color: #ee4657;
+}
+
+.pie-wrapper.progress-3 .pie .left-side {
+    transform: translate(-50%, -50%) rotate(18deg) !important;
+}
+
+.pie-wrapper.progress-12 .pie .half-circle {
+    border-color: #f1b31c;
+}
+
+.pie-wrapper.progress-12 .pie .left-side {
+    transform: translate(-50%, -50%) rotate(50deg) !important;
+}
+
+.pie-wrapper.progress-30 .pie .half-circle {
+    border-color: #d94142;
+}
+
+.pie-wrapper.progress-30 .pie .left-side {
+    transform: translate(-50%, -50%) rotate(110deg) !important;
+}
+
+.pie-wrapper.progress-50 .pie .half-circle {
+    border-color: #1a608d;
+}
+
+.pie-wrapper.progress-50 .pie .left-side {
+    transform: translate(-50%, -50%) rotate(180deg) !important;
+}
+
+.pie-wrapper.progress-5.color-Bounties .pie .half-circle {
+    border-color: #1a608d;
+}
+
+.pie-wrapper.progress-5 .pie .right-side,
+.pie-wrapper.progress-3 .pie .right-side,
+.pie-wrapper.progress-12 .pie .right-side,
+.pie-wrapper.progress-30 .pie .right-side,
+.pie-wrapper.progress-50 .pie .right-side {
+    display: none;
+}
+
+.set-size p {
+    font-size: 14px;
+    margin-top: 8px;
+    text-align: center;
+    color: #202020;
+    line-height: 24px;
+}
+
+
+/* End-circle */
+
+
+/*section-contact-us-section-start */
+
+.info-message p {
+    text-align: left;
+    letter-spacing: 0.6px;
+    color: #202020;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 90px;
+    margin-bottom: 0px;
+}
+
+.info-message i {
+    margin-right: 10px;
+    width: 100%;
+    max-width: 40px;
+    text-align: center;
+    background-color: #F5F5F5;
+    height: 40px;
+    padding: 14px;
+}
+
+.info-message {
+    width: 100%;
+    max-width: 390px;
+    box-shadow: 0px 0px 6px #0000001a;
+    border: 1px solid #FAFAFA;
+    border-radius: 30px;
+    padding-left: 40px;
+}
+
+.follow-us p {
+    text-align: left;
+    letter-spacing: 0.6px;
+    color: #606060;
+    font-size: 16px;
+    line-height: 53px;
+}
+
+.follow-us p:after {
+    content: "";
+    position: absolute;
+    border-bottom: 1px #766969 solid;
+    height: 17px;
+    width: 185px;
+    transform: translateX(6%);
+    margin-top: 10px;
+    color: #606060;
+}
+
+.contact-icon img {
+    width: 100%;
+    max-width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.send-message {
+    width: 100%;
+    max-width: 670px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #0000001A;
+    border: 1px solid #FAFAFA;
+    border-radius: 30px;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin: auto;
+}
+
+.send-message .form-none {
+    font-size: 14px;
+    text-align: left;
+    letter-spacing: 0.8px;
+    color: #606060;
+    line-height: 26px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+}
+
+.send-message .form-control:focus {
+    border-color: #E5E5E5;
+    box-shadow: unset;
+}
+
+.form-none::placeholder {
+    color: #606060;
+}
+
+.form-control::placeholder {
+    color: #606060;
+    font-weight: 400;
+}
+
+.form-control {
+    color: #606060;
+    font-weight: 400;
+}
+
+textarea::placeholder {
+    color: #606060;
+    margin-right: 6px;
+}
+
+.form-none {
+    width: 100%;
+    border: none;
+    border: 1px solid rgb(24 21 21 / 11%);
+    border-radius: unset;
+    background-color: unset;
+    resize: none;
+    padding: 10px;
+}
+
+.leave-message h4 {
+    text-align: left;
+    letter-spacing: 0.72px;
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 55px;
+}
+
+.info-message img {
+    width: 100%;
+    max-width: 52px;
+    margin-right: 14px;
+}
+
+
+/*section-contact-us-section-end */
+
+.btn.focus,
+.btn:focus {
+    box-shadow: none !important;
+}
+
+button.btn.common-btn.send-btn {
+    padding: 10px 45px;
+    margin-top: 5px;
+}
+
+.nft-buttonn button.btn.common-btn {
+    padding: 10px 40px;
+}
+
+button.btn.common-btn {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.social-icon a {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.days-hors strong span {
+    margin-left: 10px;
+}
+
+.create-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 81px);
+}
+
+.sign-up {
+    background-image: url('./assets/images/bg.png') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-brand img {
+    width: 100%;
+    max-width: 150px;
+}
+
+.common-btn {
+    background: transparent linear-gradient(103deg, #342CD7 0%, #BF38E6 100%) 0% 0% no-repeat padding-box;
+    ;
+    border-radius: 26px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+a{
+  text-decoration: none;
+}
+.send-messagesss {
+    width: 100%;
+}
+
+.submit-btn button.btn.common-btn {
+    padding: 10px 30px;
+}
+
+.form-clasic::placeholder {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.btn:not(:disabled):not(.disabled).active,
+.btn:not(:disabled):not(.disabled):active {
+    background-image: linear-gradient(103deg, #342CD7 0%, #BF38E6 100%) !important;
+}
+
+.form-control,
+.form-control::placeholder {
+    font-size: 14px !important;
+    letter-spacing: 0 !important;
+}
+
+.modal .form-control {
+    height: 40px;
+    color: #000000;
+    font-weight: 600;
+    border-color: #E5E5E5;
+}
+form {
+  width: 100%;
+}
+.iti.iti--allow-dropdown input#formGroupExampleInput {
+  width: 100% !important;
+  box-shadow: none !important;
+  height: 36px !important;
+}
+.iti.iti--allow-dropdown {
+  width: 100%;
+}
+.social-icon a.profile-img img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1360px !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .contact-icon img {
+        max-width: 35px;
+        height: 35px;
+        margin-right: 5px;
+    }
+    .charts-container {
+        flex-wrap: wrap;
+    }
+    .box {
+        margin-bottom: 70px;
+    }
+    .trade-price.pt-5.mt-5 {
+        margin-top: 0px!important;
+        padding-bottom: 60px;
+    }
+    .distribution-circle.pt-5.mt-5.pb-5.mb-4 {
+        padding-bottom: 0px!important;
+    }
+    .use-of-proceed.pt-5.mt-5.pb-5.mb-5 {
+        padding-top: 0px!important;
+    }
+    .crose-chain {
+        height: 560px;
+    }
+    section.create-account {
+        height: 100% !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .send-message {
+        max-width: 100%;
+        margin-top: 50px !important;
+    }
+    .use-of-proceed.pt-5.mt-5.pb-5.mb-5 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .dister-token h1 {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+    .info-message {
+        max-width: 100%;
+    }
+    .circle-timing {
+        margin-top: 50px;
+    }
+    .crose-chain {
+        height: 100%;
+        padding-bottom: 80px;
+        margin-bottom: 40px;
+    }
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    .levaen-ecosystem img {
+        width: 100%;
+    }
+    .levaen-ecosystem {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .token-of-the-leaven.pt-5.mt-5.pb-5.mb-5 {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .trade-price .row .col-lg-6:first-child {
+        order: 2;
+        margin-top: 30px;
+    }
+    .trade-price .row {
+        flex-direction: column;
+    }
+    section.contact-us.pt-5.mt-5 {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .nft-btn h1 {
+        line-height: 50px;
+        font-size: 26px;
+    }
+    .ecosystem-native h1 {
+        font-size: 22px;
+        line-height: 33px;
+    }
+    .list-item .left-li li {
+        padding-left: 15px;
+    }
+    .trade-price.pt-5.mt-5 {
+        margin-top: 30px!important;
+    }
+    .distribution-circle.pt-5.mt-5.pb-5.mb-4 {
+        padding-top: 20px!important;
+    }
+    .use-of-proceed.pt-5.mt-5.pb-5.mb-5 {
+        padding-top: 20px!important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nft-buttonn .butoon-transparent {
+        font-size: 12px;
+        padding: 5px 16px;
+        margin-left: 7px;
+    }
+    button.common-btn {
+        font-size: 12px;
+        padding: 6px 16px;
+        margin-left: 0px;
+    }
+    .nft-btn h1 {
+        line-height: 40px;
+        font-size: 26px;
+    }
+    .days-hors strong {
+        font-size: 12px;
+    }
+    .days-hors p {
+        font-size: 12px;
+        letter-spacing: 0px;
+    }
+    .time-days {
+        top: 37%;
+    }
+    .ecosystem-native span {
+        font-size: 30px;
+    }
+    .ecosystem-native h4 {
+        font-size: 16px;
+        line-height: 40px;
+    }
+    .trade-price.pt-5.mt-5 {
+        padding-bottom: 40px!important;
+    }
+    .salle-token.pt-5.mt-5 {
+        padding-top: 23px!important;
+    }
+    .dister-token h1 {
+        margin-bottom: 25px;
+        line-height: 40px;
+    }
+    .follow-us p:after {
+        margin-top: 12px;
+    }
+    .send-message.pt-4.pb-5.mb-5 {
+        margin-bottom: 30px!important;
+    }
+    .list-item .left-li li {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .token-detail {
+        overflow: auto;
+        white-space: nowrap;
+    }
+    .list-item .right-li li {
+        padding-right: 15px;
+    }
+    .nft-buttonn button.btn.common-btn {
+        font-size: 12px;
+        padding: 7px 16px;
+    }
+    .dister-token h1:after {
+        max-width: 160px;
+    }
+}

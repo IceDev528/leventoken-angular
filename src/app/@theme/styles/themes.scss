@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap");
+@import "./global-margin-padding.scss";
+@import "./global-color.scss";
+@import "./global-icons.scss";
+@import "./global-cursor.scss";
+@import "./global-typography.scss";
+@import "./_color.scss";
+
+* {
+  outline: none !important;
+}
+body, .page-wrapper {
+  background: #eee;
+}
+input,
+select,
+textarea {
+  background-color: #f7f9fc !important;
+  border-color: #dedede !important;
+}
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
+  color: #5a5a5a !important;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: none !important;
+}
+
+textarea {
+  resize: none !important;
+  color: #5a5a5a !important;
+  ::placeholder {
+    color: #5a5a5a !important;
+  }
+}
+
+agm-map {
+  // width: 250px !important;
+  height: 300px !important;
+}
+.single-line-ellipsis {
+  word-break: break-all;
+  display: -webkit-box !important;
+  width: 100% !important;
+  -webkit-line-clamp: 1 !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis !important;
+}
+.single-line-ellipsis-without-width {
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.two-line-ellipsis {
+  display: block !important;
+  width: 100% !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.image-fit {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.image-round {
+  border-radius: 50% !important;
+}
+.box-shadow {
+  box-shadow: 0px -1px 3px #8a8888 !important;
+}
+
+/**
+* Star rating CSS
+*/
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  color: #000;
+}
+.full {
+  color: #f7aa03;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #f7aa03;
+}
+
+.headerModalClass {
+  .modal-dialog {
+    max-width: 435px !important;
+  }
+}
+.btn {
+  color: #fff !important;
+  border-radius: 4px !important;
+}
+.g-btn,
+.f-btn {
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  height: 42px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.26px !important;
+}
+.g-btn {
+  background-color: $google-btn-color !important;
+}
+.f-btn {
+  background-color: $fb-btn-color !important;
+}
+
+.card-shadow {
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25) !important;
+}
+
+
+@keyframes rotating {
+	from {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	to {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+.rotating {
+  position: absolute;
+  color: red;
+  // transform: translate(-50%,-50%);
+	-webkit-animation: rotating 2s linear infinite;
+	-moz-animation: rotating 2s linear infinite;
+	-ms-animation: rotating 2s linear infinite;
+	-o-animation: rotating 2s linear infinite;
+	animation: rotating 2s linear infinite;
+}

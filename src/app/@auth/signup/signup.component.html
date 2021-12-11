@@ -1,0 +1,127 @@
+<!-- header-section-start -->
+<div class="sign-up">
+  <header class="leven-header">
+      <nav class="navbar navbar-expand-lg navbar-light he pt-3 pb-3">
+          <div class="container">
+              <a class="navbar-brand img-brand" href="#"><img src="../../assets/images/leven_logo.png" alt="leven-logo"></a>
+          </div>
+      </nav>
+  </header>
+  <!-- header-section-end -->
+  <!-- leaven-create-account-section-start -->
+  <section class="create-account">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-5">
+                <form [formGroup]="signUpForm">
+                  <div class="send-messagesss pt-4 pb-5 mb-5">
+
+                      <div class="leave-message">
+                          <h4>Create An Account</h4>
+                          <p>Create your account and get 1000 free coins.</p>
+                      </div>
+                      <div class="mb-3">
+                          <input type="text" formControlName="name" class="form-control form-clasic" id="name" placeholder="Name">
+                          <div *ngIf="signUpFormError && f.name.errors" class="invalid-feedback d-flex align-items-center">
+                            <div class="d-flex align-items-center" *ngIf="f.name.errors?.required">
+                              <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                              <span class="pl-1">Please enter the name</span>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                          <input type="text" formControlName="email" class="form-control form-clasic" id="email" placeholder="Email">
+                          <div *ngIf="signUpFormError && f?.email?.errors" class="invalid-feedback d-flex align-items-center w-100">
+                            <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                            <span class="pl-1" *ngIf="f.email.errors?.required">Please enter Email.</span>
+                            <span class="pl-1" *ngIf="f.email.errors?.email">Please enter Valid Email.</span>
+                          </div>
+                      </div>
+                      <ng-container *ngIf="shownumber">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input autocomplete="nope" maxlength="13" id="formGroupExampleInput" style="width:400px;" type="text" appNumber class="form-control form-clasic iti__country-list"
+                            placeholder="Phone Number" ng2TelInput (ng2TelOutput)="getNumber($event)"
+                            formControlName="phone_no" [ng2TelInputOptions]="{initialCountry: 'us'}"
+                            (intlTelInputObject)="telInputObject($event)" (countryChange)="onCountryChange($event)" />
+                          <div *ngIf="signUpFormError && f?.phone_no?.errors" class="invalid-feedback d-flex align-items-center w-100">
+                            <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                            <span class="pl-1" *ngIf="f.phone_no.errors?.required">Please enter phone number.</span>
+                            <span class="pl-1" *ngIf="f.phone_no.errors?.minlength">Your phone number should be of atleast 10
+                              digits.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                      <div class="mb-3 mt-3 position-relative">
+                          <input type="{{passwordInputType}}" formControlName="password" class="form-control form-clasic" id="password" placeholder="Password">
+                          <ng-container *ngIf="passwordInputType =='password'">
+                            <span class="toggel-eye" (click)="passwordInputType = 'text'">
+                          <i class="toggle-password far fa-eye-slash"></i>
+                             </span>
+                           </ng-container>
+                           <ng-container *ngIf="passwordInputType !='password'">
+                            <span class="toggel-eye" (click)="passwordInputType = 'password'">
+                              <i class="toggle-password far fa-eye "></i>
+                            </span>
+                          </ng-container>
+                          <div *ngIf="signUpFormError && f.password?.errors" class="invalid-feedback d-flex align-items-center">
+                            <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                            <div *ngIf="f.password.errors?.required" class="col-12 invalid-feedback d-flex align-items-center">
+                              Please enter Password
+                            </div>
+                            <div *ngIf="f.password.errors?.canNotContainSpace"
+                              class="col-12 invalid-feedback d-flex align-items-center w-100">
+                              Password can't contain space
+                            </div>
+                            <div class="col-12 invalid-feedback d-flex align-items-center" *ngIf=" (f.password.errors?.minlength || f.password.hasError( 'pattern' )) &&
+                            !f.password.errors?.canNotContainSpace && !f.password.errors?.required ">
+                              <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                              <span class="pl-1">Password must be min 8 characters long and alphanumeric</span>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="mb-3 position-relative">
+                          <input type="{{confirmpasswordInputType}}" formControlName="confirm_password" class="form-control form-clasic" id="confirmPassword" placeholder="Confirm Password">
+                          <ng-container *ngIf="confirmpasswordInputType =='password'">
+                            <span class="toggel-eye" (click)="confirmpasswordInputType = 'text'">
+                          <i class="toggle-password far fa-eye-slash "></i>
+                             </span>
+                           </ng-container>
+                           <ng-container *ngIf="confirmpasswordInputType !='password'">
+                            <span class="toggel-eye" (click)="confirmpasswordInputType = 'password'">
+                              <i class="toggle-password far fa-eye "></i>
+                            </span>
+                          </ng-container>
+                          <div *ngIf="signUpFormError" class="invalid-feedback d-flex align-items-center">
+                            <div *ngIf="f.confirm_password.errors?.required"
+                              class="col-12 invalid-feedback d-flex align-items-center">
+                              Please enter confirm password
+                            </div>
+                            <div *ngIf="mustMatch" class="col-12 invalid-feedback d-flex align-items-center">
+                              Confirm password and password must be same.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                        <input type="text" formControlName="referred_by" class="form-control form-clasic" id="referedBy" placeholder="Enter referal cod If any">
+                    </div>
+                      <div class="login d-flex justify-content-between align-items-center">
+                          <button (click)="signupUser()" [disabled]="saveLoading" class="btn common-btn" type="submit">SIGN UP</button>
+                          <p class="mb-0">Already have an Account? <a [routerLink]="['/login']"><span>Log in</span></a></p>
+                      </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="col-lg-7">
+                  <div class="image-vecter">
+                      <img src="../../assets/images/signup_login_vector.png" alt="signup_login_vector">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+
+<!-- leven-create-account-sectiom-end -->

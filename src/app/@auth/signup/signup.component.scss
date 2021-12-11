@@ -1,0 +1,158 @@
+.img-brand img {
+  width: 100%;
+  max-width: 150px;
+}
+
+.common-btn {
+  background: transparent linear-gradient(103deg, #342CD7 0%, #BF38E6 100%) 0% 0% no-repeat padding-box;
+  ;
+  border-radius: 26px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  padding: 10px 40px;
+}
+
+
+/* create-account-style-start */
+
+.leave-message h4 {
+  text-align: left;
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 50px;
+  letter-spacing: 1.5px;
+  color: #202020;
+}
+
+.leave-message p {
+  text-align: left;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0.72px;
+  color: #606060;
+  padding-bottom: 20px;
+}
+
+.form-clasic::placeholder {
+  text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.8px;
+  color: #606060;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #e5e5e5;
+  outline: unset;
+  color: unset;
+}
+
+.form-clasic {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+.btn-outline-secondary {
+  border-color: #e5e5e5;
+}
+
+.boder-element {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+button.btn.btn-outline-secondary.dropdown-toggle.show {
+  box-shadow: unset;
+}
+
+.form-clasicc {
+  border: none;
+}
+
+.drop-boder {
+  border-right: 1px solid #e5e5e5;
+  height: 33px;
+  margin-top: 1px;
+}
+
+.login {
+  font-size: 14px;
+  line-height: 20px;
+  color: #606060;
+}
+
+.login span {
+  color: #202020;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 75px;
+}
+
+.image-vecter {
+  text-align: center;
+}
+
+.image-vecter img {
+  width: 100%;
+  max-width: 800px;
+}
+i.toggle-password.far.fa-eye,i.toggle-password.far.fa-eye-slash {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* create-account-style-end */
+
+
+@media screen and (max-width: 1200px) {
+  .leave-message h4{
+      font-size: 32px;
+  }
+  .leave-message p{
+      font-size: 14px;
+  }
+
+  .common-btn{
+      font-size: 12px;
+      letter-spacing: 0.6px;
+  }
+  .login{
+      font-size: 12px;
+  }
+  .login span{
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .leave-message h4{
+      font-size: 24px;
+      margin-bottom: 0px;
+      line-height: 40px;
+  }
+  .leave-message p{
+      font-size: 12px;
+      margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 414px) {
+      .login {
+          flex-wrap: wrap-reverse;
+          line-height: 10px;
+      }
+      .login span {
+          line-height: 30px;
+      }
+      .login p{
+          padding-bottom: 10px;
+      }
+      .leave-message p{
+           line-height: 20px;
+      }
+}

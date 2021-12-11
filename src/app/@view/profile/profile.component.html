@@ -1,0 +1,319 @@
+<!--edit-email-section-start -->
+<section class="edit-email">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="edit-profile ">
+          <div class="jhon-deo text-center pt-4 pb-4">
+            <div class="circle-profile position-relative">
+              <!-- <img [src]="profileData?.profile_pic?imgUrl+profileData.profile_pic:'../../assets/images/profile_big.png'" alt="profile_big" class="circle-profile"> -->
+              <ng-container *ngIf="profileData?.profile_pic">
+                <a routerLink="/profile" class="text-dark">
+                  <img [src]="imgUrl+profileData.profile_pic" alt="profile_big" class="circle-profile">                </a>
+              </ng-container>
+              <ng-container *ngIf="!profileData?.profile_pic">
+                <a routerLink="/profile" class="text-dark">
+                  <span class="name-profile">{{userNameShort}}</span>
+                </a>
+              </ng-container>
+
+              <label for="uploadImg"> <i
+                  class="fas fa-camera cmaera-font position-absolut position-absolute"></i></label>
+              <input type="file" class="d-none" id="uploadImg" (change)="uploadImg($event,true)">
+              <p>{{profileData?.name}}</p>
+
+            </div>
+
+            <p>{{profileData?.email}}</p>
+            <p class="pb-2"><i class="fas fa-phone-alt"></i>+{{profileData?.country_code}}-{{profileData?.phone_no}}</p>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn common-btn" data-bs-toggle="modal" (click)="editProfile()" #editProfileDissmiss data-bs-target="#exampleModal"><i
+                class="fas fa-pencil-alt pencilin"></i>
+              Edit Profile
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+
+              <div class="modal-dialog">
+                <form [formGroup]="contactDetailForm">
+
+                  <div class="modal-content">
+                    <div class="modal-header border-0  justify-content-center">
+                      <h5 class="modal-title text-center" id="exampleModalLabel">Edit Profile</h5>
+                      <button type="button" class="btn-close close-icon  " #persnalInfo data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+
+                    <div class="girl-profile position-relative mb-3">
+                      <!-- <img [src]="newImgUrl?imgUrl+newImgUrl:profileData?.profile_pic?imgUrl+profileData.profile_pic:'../../assets/images/profile_big.png'" alt="profile_big" class=""> -->
+                      <ng-container *ngIf="profileData?.profile_pic ||newImgUrl">
+                          <img [src]="newImgUrl?imgUrl+newImgUrl:profileData?.profile_pic?imgUrl+profileData.profile_pic:'../../assets/images/profile_big.png'" alt="profile_big" class="">
+                      </ng-container>
+                      <ng-container *ngIf="!profileData?.profile_pic && !newImgUrl">
+                          <span class="name-profile">{{userNameShort}}</span>
+                      </ng-container>
+                      <label for="uploadImgProfile"> <i class="fas fa-camera cmaera-font position-absolut position-absolute"></i></label>
+                    <input type="file" class="d-none" id="uploadImgProfile" (change)="uploadImg($event,false)">
+                    </div>
+                    <div class="modal-body ul-listt text-start pb-0 pt-0">
+                      <div class="send-messagesss pt-2 p-4 pb-3">
+                        <div class="mb-4">
+                          <input type="text" formControlName="name" class="form-control form-clasic"
+                            id="formGroupExampleInput" placeholder="John Doe">
+                        </div>
+                        <div class="mb-4">
+                          <span *ngIf="!profileData?.email_verified" class="cursor-pointer text-danger" (click)="sendOtp(otp,editProfileDissmiss,true)">verify</span>
+                          <input [disabled]="profileData?.email_verified" type="text" formControlName="email" class="form-control form-clasic"
+                            id="formGroupExampleInput" placeholder="johndoe123@gmail.com" [ngClass]="profileData?.email_verified?'email_disable':''">
+                        </div>
+                        <ng-container *ngIf="countryCode">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <input autocomplete="off" id="formGroupExampleInput" style="width:400px;" type="text"
+                                appNumber class="form-control form-clasic iti__country-list" placeholder="Phone Number"
+                                appNumber maxlength="13" ng2TelInput (ng2TelOutput)="getNumber($event)"
+                                formControlName="phone_no" [ng2TelInputOptions]="{initialCountry: 'us'}"
+                                (intlTelInputObject)="telInputObject($event)"
+                                (countryChange)="onCountryChange($event)" />
+                              <div *ngIf="contactDetailForm && f?.phone_no?.errors"
+                                class="invalid-feedback d-flex align-items-center w-100">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="pl-1" *ngIf="f.phone_no.errors?.required">Please enter phone number.</span>
+                                <span class="pl-1" *ngIf="f.phone_no.errors?.minlength">Your phone number should be of
+                                  atleast 10
+                                  digits.</span>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+
+
+                      </div>
+                    </div>
+                    <div class="modal-footer justify-content-center mb-3 pb-2 pt-0">
+                      <button (click)="saveProfile(persnalInfo)" type="submit" class="btn common-btn">SUBMIT</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
+            <div class="lvl-coin mt-4 pb-4">
+              <p class="pt-4">Your Coins</p>
+              <h4>{{profileData?.total_coins}} LVL</h4>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn common-btn" data-bs-toggle="modal" data-bs-target="#getMoreFree">
+                GET MORE FREE COINS
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="getMoreFree" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <div class="modal-header border-0  justify-content-center">
+                      <h5 class="modal-title " id="exampleModalLabel">Refer & Earn More Free Coins</h5>
+                      <button type="button" class="btn-close close-icon" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body list-modal text-start">
+                      <ul>
+                        <li>Copy the Refferal Code</li>
+                        <li>Send it to your Friends/Relatives</li>
+                        <li>When they SignUp you get 50 Coins</li>
+                      </ul>
+
+
+                      <div class="copy-content ml-3 mr-3">
+                        <p class="d-flex align-items-center justify-content-between">{{profileData?.ref_code}}<span (click)="copy(profileData?.ref_code)"> <i
+                            class="far fa-copy cursor-pointer" ></i></span></p>
+                      </div>
+                    </div>
+                    <div class="modal-footer justify-content-center pb-4 pt-2">
+                      <a routerLink="/refer" data-bs-dismiss="modal"><button type="button" class="btn common-btn">SHARE
+                          VIA MAIL</button></a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 mt-4 position-relative">
+            <button class="form-control form-clasic clasical-name mb-4 p-3" id="formGroupExampleInput"
+              data-bs-toggle="modal" data-bs-target="#changePassword" (click)="resetChangePassForm()">Change Password <i
+                class="fas fa-chevron-right pswd-icon position-absolute"></i></button>
+          </div>
+
+
+
+          <div class="mb-3 position-relative">
+            <button (click)="logOut()" class="form-control form-clasic clasical-name icon-placehold mb-4 p-3"
+              id="formGroupExampleInput"><i class="fas fa-power-off switch-off me-2"></i><b>Log Out</b></button>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Modal --change-password-->
+  <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form [formGroup]="changePasswordForm">
+        <div class="modal-content">
+          <div class="modal-header border-0  justify-content-center pb-0 ">
+            <h5 class="modal-title text-center" id="exampleModalLabel">Change Password</h5>
+            <button type="button" class="btn-close close-icon  " #changePass data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body ul-listt text-start pt-0 pb-0">
+            <div class="send-messagesss pt-4 px-3">
+
+              <div class="mb-4 position-relative">
+                <input type="{{oldPasswordInputType}}" formControlName="old_password" class="form-control form-clasic" id="formGroupExampleInput"
+                  placeholder="Old Password">
+                <!-- <i class="toggle-password far fa-eye "></i> -->
+                <ng-container *ngIf="oldPasswordInputType =='password'">
+                  <span class="toggel-eye" (click)="oldPasswordInputType = 'text'">
+                <i class="toggle-password far fa-eye-slash "></i>
+                   </span>
+                 </ng-container>
+                 <ng-container *ngIf="oldPasswordInputType !='password'">
+                  <span class="toggel-eye" (click)="oldPasswordInputType = 'password'">
+                    <i class="toggle-password far fa-eye "></i>
+                  </span>
+                </ng-container>
+                <div *ngIf="changePasswordFormError && passForm.old_password?.errors" class="invalid-feedback d-flex align-items-center">
+                  <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                  <div *ngIf="passForm.old_password.errors?.required" class="col-12 invalid-feedback d-flex align-items-center">
+                    Please enter password
+                  </div>
+                  <!-- <div *ngIf="passForm.old_password.errors?.canNotContainSpace"
+                    class="col-12 invalid-feedback d-flex align-items-center w-100">
+                    Password can't contain space
+                  </div> -->
+                  <!-- <div class="col-12 invalid-feedback d-flex align-items-center" *ngIf=" (passForm.old_password.errors?.minlength || passForm.old_password.hasError( 'pattern' )) &&
+                  !passForm.old_password.errors?.canNotContainSpace && !passForm.old_password.errors?.required ">
+                    <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                    <span class="pl-1">Password must be min 8 characters long and alphanumeric</span>
+                  </div> -->
+                </div>
+              </div>
+              <div class="mb-4 position-relative">
+                <input type="{{passwordInputType}}" formControlName="new_password" class="form-control form-clasic" id="formGroupExampleInput"
+                  placeholder="New Password">
+                  <ng-container *ngIf="passwordInputType =='password'">
+                    <span class="toggel-eye" (click)="passwordInputType = 'text'">
+                  <i class="toggle-password far fa-eye-slash "></i>
+                     </span>
+                   </ng-container>
+                   <ng-container *ngIf="passwordInputType !='password'">
+                    <span class="toggel-eye" (click)="passwordInputType = 'password'">
+                      <i class="toggle-password far fa-eye "></i>
+                    </span>
+                  </ng-container>
+                  <div *ngIf="changePasswordFormError && passForm.new_password?.errors" class="invalid-feedback d-flex align-items-center">
+                    <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                    <div *ngIf="passForm.new_password.errors?.required" class="col-12 invalid-feedback d-flex align-items-center">
+                      Please enter new password
+                    </div>
+                    <div *ngIf="passForm.new_password.errors?.canNotContainSpace"
+                      class="col-12 invalid-feedback d-flex align-items-center w-100">
+                      Password can't contain space
+                    </div>
+                    <div class="col-12 invalid-feedback d-flex align-items-center" *ngIf=" (passForm.new_password.errors?.minlength || passForm.new_password.hasError( 'pattern' )) &&
+                    !passForm.new_password.errors?.canNotContainSpace && !passForm.new_password.errors?.required ">
+                      <!-- <i class="fa fa-info-circle mx-1" aria-hidden="true"></i> -->
+                      <span class="pl-1">Password must be min 8 characters long and alphanumeric</span>
+                    </div>
+                  </div>
+              </div>
+              <div class="mb-4 position-relative">
+                <input type="{{confirmPasswordInputType}}" formControlName="confirm_password" class="form-control form-clasic" id="formGroupExampleInput"
+                  placeholder="Confirm Password">
+                  <ng-container *ngIf="confirmPasswordInputType =='password'">
+                    <span class="toggel-eye" (click)="confirmPasswordInputType = 'text'">
+                  <i class="toggle-password far fa-eye-slash "></i>
+                     </span>
+                   </ng-container>
+                   <ng-container *ngIf="confirmPasswordInputType !='password'">
+                    <span class="toggel-eye" (click)="confirmPasswordInputType = 'password'">
+                      <i class="toggle-password far fa-eye "></i>
+                    </span>
+                  </ng-container>
+                  <div *ngIf="changePasswordFormError" class="invalid-feedback d-flex align-items-center">
+                    <div *ngIf="passForm.confirm_password.errors?.required"
+                      class="col-12 invalid-feedback d-flex align-items-center">
+                      <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                      Please enter confirm password
+                    </div>
+                    <div *ngIf="mustMatch && passForm.confirm_password != passForm.new_password" class="col-12 invalid-feedback d-flex align-items-center">
+                      <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                      Confirm password and password must be same.
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center mb-3 pt-0">
+            <button type="button" (click)="changePassword(changePass)" class="btn common-btn">SUBMIT</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!--edit-email-section-end -->
+
+
+
+<!-- otp modal -->
+<ng-template #otp let-modal>
+	<div class="modal-body">
+		<div class="enter_pin booking-modal">
+			<div class="p-5 text-center">
+				<div class="d-inline-block w-100 cross">
+					<!-- <img src="../../../assets/img/booking_steps/cancel_check_availibility.png"
+						(click)="modal.close() || closeModal()" class="float-right" /> -->
+				</div>
+				<h6>Enter One Time Passcode</h6>
+				<p class="mb-0">
+					<!-- Please enter customer one time passcode to proceed -->
+					<!-- Please Enter customer One Time Passcode to proceed -->
+					Please Enter Otp
+				</p>
+				<div class="mt-4 mb-2 d-inline-flex">
+					<input type="text" [(ngModel)]="one" (keydown)="onKeyDown($event)" class="form-control otp" (keyup)="goToNextInput($event)"
+						class="otp-input" maxLength="1" size="1" min="0" max="9" class="form-control otp" pattern="[0-9]{1}" />
+					<input type="text" [(ngModel)]="two" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+						class="otp-input" maxLength="1" size="1" min="0" max="9" class="form-control otp" pattern="[0-9]{1}" />
+					<input type="text" [(ngModel)]="three" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+						class="otp-input" maxLength="1" size="1" min="0" max="9" class="form-control otp" pattern="[0-9]{1}" />
+					<input type="text" [(ngModel)]="four" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+						class="otp-input" maxLength="1" size="1" min="0" max="9" class="form-control otp" pattern="[0-9]{1}" />
+					<!-- <input type="text" [(ngModel)]="five" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+						class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+					<input type="text" [(ngModel)]="six" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+						class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" /> -->
+        </div>
+        <p class="mb-0 cursor-pointer my-2">Didn't receive code? <span (click)="resendOtp(otp,editProfileDissmiss)" class="pointer">Resend</span></p>
+
+				<button (click)="verifyOtp()"
+					[disabled]="!one || !two || !three || !four ||optRequested == true"
+					class="btn common-btn">
+					Submit
+					<i *ngIf="optRequested" class="fas rotating fa-spinner"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</ng-template>

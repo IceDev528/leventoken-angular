@@ -1,0 +1,77 @@
+<!-- header-section-start -->
+<header class="leven-header">
+  <nav class="navbar navbar-expand-lg navbar-light he pt-3 pb-3">
+      <div class="container">
+          <a class="navbar-brand img-brand" href="#"><img src="../../assets/images/leven_logo.png" alt="leven-logo"></a>
+      </div>
+  </nav>
+</header>
+<!-- header-section-end -->
+<!-- forget-section-start -->
+<section class="forget">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8">
+              <div class="forget-img d-flex justify-content-start align-items-start">
+                  <img src="../../assets/images/forget_pass_vector.png" alt="forget_pass_vector">
+                  <div class="cutome-otp d-flex justify-content-evenly align-items-center">
+                      <div class="circle-do">
+                          <span></span>
+                      </div>
+                      <div class="circle-do">
+                          <span></span>
+                      </div>
+                      <div class="circle-do">
+                          <span></span>
+                      </div>
+                      <div class="circle-do">
+                          <span></span>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+          <div class="col-lg-4">
+              <div class="login-left">
+                  <div class="send-messagesss pb-5 mb-5">
+
+                      <div class="leave-message">
+                          <h4>Enter OTP</h4>
+                          <p>An OTP has been sent to your email. Please input it below to reset your password</p>
+                      </div>
+
+                      <div class="mb-3">
+                          <div class="d-flex justify-content-center">
+                              <input type="text" [(ngModel)]="one" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)" class="form-control otp" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}"  autofocus="">
+                              <input type="text" [(ngModel)]="two" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)" class="form-control otp" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" >
+                              <input type="text" [(ngModel)]="three" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)" class="form-control otp" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" >
+                              <input type="text" [(ngModel)]="four" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)" class="form-control otp" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" >
+                          </div>
+                          <!-- <div class="my-4">
+                            <input type="text" [(ngModel)]="one" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+                              class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                            <input type="text" [(ngModel)]="two" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+                              class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                            <input type="text" [(ngModel)]="three" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+                              class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                            <input type="text" [(ngModel)]="four" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+                              class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                            <input type="text" [(ngModel)]="five" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+                              class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                            <input type="text" [(ngModel)]="six" (keydown)="onKeyDown($event)" (keyup)="goToNextInput($event)"
+                              class="otp-input" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                          </div> -->
+                      </div>
+
+                      <div class="login d-flex justify-content-between align-items-center submit-btn">
+                          <!-- <a [routerLink]="['/newpass']"><button class="btn common-btn" type="submit">SUBMIT</button></a> -->
+                          <a ><button class="btn common-btn" type="submit" (click)="submitOtp()">SUBMIT</button></a>
+
+                          <p class="mb-0 cursor-pointer">Didn't receive code? <span (click)="resendOtp()" class="pointer">Resend</span></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

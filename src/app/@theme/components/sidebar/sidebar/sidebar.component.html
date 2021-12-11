@@ -1,0 +1,59 @@
+<div class="sidebar pb-4 mb-5">
+  <div class="side-head d-flex flex-column align-items-center justify-content-center">
+    <div class="side-img mr-3 mb-3 position-relative">
+      <label for="imageUp" class="edit-lable">
+        <i *ngIf="uploading == true" class="fas fa-spinner rotating fs-26"></i>
+        <i *ngIf="uploading == false" aria-hidden="true" class="fas fa-camera"></i>
+      </label>
+      <input (change)="imageUpload($event)" accept="image/*" class="form-control d-none" id="imageUp" type="file">
+      <div class="contain">
+        <ng-container *ngIf="user?.profile_image == null">
+          <img appLazyImg alt="..." src="../assets/images/user.png">
+        </ng-container>
+        <ng-container *ngIf="user?.profile_image">
+          <img appLazyImg alt="..." *ngIf="user?.profile_image"
+            [src]="((user?.profile_image).substring(0, 4) != 'http') ? (imgUrl+user?.profile_image) : user?.profile_image"
+            #profilePic (error)="profilePic.src = '../assets/images/user.png'">
+          <img appLazyImg src='../assets/images/user.png' *ngIf="!user?.profile_image" alt="profile pic">
+        </ng-container>
+      </div>
+    </div>
+    <div class="text-center" style="height: 60px;">
+      <h2 class="heading-large text-zblack lsp-4 fs-20 fw-700">asdasd{{ user?.first_name }} {{user?.last_name}}</h2>
+      <p class="text-dark-sky m-0 fs-14">{{user?.email}}</p>
+    </div>
+  </div>
+  <div class=" py-2 ">
+    <div class="col-12 d-flex border-top border-bottom p-3">
+      <div class="col-4 text-center p-0">
+        <p class="m-0"> Tickets</p>
+        <p class="m-0">5</p>
+
+
+      </div>
+      <div class="col-4 text-center p-0">
+        <p class="m-0">Likes</p>
+        <p class="m-0">3</p>
+
+      </div>
+      <div class="col-4 text-center p-0">
+        <p class="m-0">Followings
+        </p>
+        <p class="m-0">4</p>
+      </div>
+    </div>
+
+  </div>
+
+  <ul class="menu py-3 pl-0">
+    <li [ngClass]="{active: activeRoute('/profile/dashboard')}"><a [routerLink]="['/profile']">Profile</a></li>
+    <li [ngClass]="{active: activeRoute('/profile/user-account')}"><a
+        [routerLink]="['/profile/user-account']">Account</a></li>
+    <li [ngClass]="{active: activeRoute('/profile/my-reviews')}"><a href="#"
+        [routerLink]="['/profile/my-reviews']">Reviews</a></li>
+    <li [ngClass]="{active: activeRoute('/profile/cards')}"><a href="#" [routerLink]="['/profile/cards']">Cards</a>
+    </li>
+    <li [ngClass]="{active: activeRoute('/profile/transactions')}"><a href="#"
+        [routerLink]="['/profile/transactions']">Transactions</a></li>
+  </ul>
+</div>

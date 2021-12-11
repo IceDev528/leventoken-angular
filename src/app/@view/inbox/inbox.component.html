@@ -1,0 +1,329 @@
+<div class="container-fluid mb-2">
+  <div class="row">
+    <div [ngClass]="showMessage ? 'col-lg-3 col-md-4 p-0' : 'col-lg-3 '">
+      <div class="d-md-block" [ngClass]="status ? 'd-none' : 'd-block'">
+        <div class="overflow-auto profiles bg-light py-4 px-3 border-right more-chat">
+          <div class="d-flex flex-column">
+
+            <div class="d-flex search position-relative mb-4">
+              <div class="d-flex flex-grow-1 align-items-center">
+                <img alt="search" src="../../../../assets/img/search.png" height="17px" />
+                <input autocomplete="off" type="text" class="form-control p-l-2_5 font-14" [(ngModel)]="search"
+                  (ngModelChange)="this.searchUpdate.next($event)" id="event_title" aria-describedby="eventTitle"
+                  placeholder="Search" />
+              </div>
+              <div class="d-flex justify-content-center align-items-center ml-2 add-user-icon-wrapper">
+                <i (click)="toggle()" class="fas fa-user-plus pl-1 text-white"></i>
+              </div>
+            </div>
+
+            <div class="inbox">
+              <ng-container *ngIf="chats?.length > 0">
+
+                <div class="d-flex align-items-center" style="cursor:pointer !important"
+                  *ngFor="let val of chats; let i=index;">
+                  <div (click)="displayMsgs(i, val)" [id]="i" class="d-flex py-3 w-100  chatBox"
+                    style="cursor:pointer !important">
+                    <ng-container *ngIf="val.from_me == 1">
+                      <div>
+                        <img appLazyImg class="profile-pic" [src]="imgUrl + val.profile_image" #profilePic (error)="
+                        profilePic.src =
+                        './assets/images/profile-3.jpg'
+                        " />
+                      </div>
+                      <div class="pl-3 w-100 ">
+                        <div class="d-flex justify-content-between">
+
+                          <b class="text-dark text-capitalize">{{val.participant}}</b>
+                          <div class="fa text-right text-success ml-2">
+                            {{ val.created_at | date: "mediumDate" }}
+                          </div>
+                        </div>
+
+                        <div class="d-flex">
+                          <p class="small text-color m-0">
+                            {{val.message}}
+                          </p>
+                          <ng-container *ngIf="val.is_read ==1">
+                            <svg class="ml-2" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="check-double"
+                              width="11px" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                              <path fill="#28a745"
+                                d="M444.96 159l-12.16-11c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L131.77 428 31.42 329c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L3.04 340C1.01 342.67 0 345.67 0 349s1.01 6 3.04 8l120.62 119c2.69 2.67 5.57 4 8.62 4s5.92-1.33 8.62-4l304.07-300c2.03-2 3.04-4.67 3.04-8s-1.02-6.33-3.05-9zM127.17 284.03c2.65 2.65 5.48 3.97 8.47 3.97s5.82-1.32 8.47-3.97L365.01 63.8c1.99-2 2.99-4.65 2.99-7.96s-1-6.29-2.99-8.94l-11.96-10.93c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97L135.14 236.34l-72.25-72.03c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97l-11.96 10.93C33 177.89 32 180.87 32 184.18s1 5.96 2.99 7.95l92.18 91.9z"
+                                class="ml-2"></path>
+                            </svg>
+                          </ng-container>
+                          <ng-container *ngIf="val.is_read ==0">
+                            <svg aria-hidden="true" class="ml-2" focusable="false" data-prefix="fal" data-icon="check-double"
+                              width="11px" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                              <path fill="#6f7971a8"
+                                d="M444.96 159l-12.16-11c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L131.77 428 31.42 329c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L3.04 340C1.01 342.67 0 345.67 0 349s1.01 6 3.04 8l120.62 119c2.69 2.67 5.57 4 8.62 4s5.92-1.33 8.62-4l304.07-300c2.03-2 3.04-4.67 3.04-8s-1.02-6.33-3.05-9zM127.17 284.03c2.65 2.65 5.48 3.97 8.47 3.97s5.82-1.32 8.47-3.97L365.01 63.8c1.99-2 2.99-4.65 2.99-7.96s-1-6.29-2.99-8.94l-11.96-10.93c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97L135.14 236.34l-72.25-72.03c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97l-11.96 10.93C33 177.89 32 180.87 32 184.18s1 5.96 2.99 7.95l92.18 91.9z"
+                                class=""></path>
+                            </svg>
+                          </ng-container>
+                        </div>
+
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="val.from_me == 0">
+                      <img appLazyImg class="profile-pic" [src]="imgUrl + val.profile_image" #profilePic (error)="
+                        profilePic.src =
+                        './assets/images/profile-3.jpg'
+                      " />
+                      <!-- <img class="profile-pic" src="./assets/images/profile-3.jpg"> -->
+                      <div class="pl-3 w-100 ">
+                        <div class="d-flex justify-content-between">
+
+                          <b class="text-dark text-capitalize">{{val.participant}}</b>
+                          <div class="fa text-right text-success ml-2">
+                            {{ val.created_at | date: "mediumDate" }}
+                          </div>
+                        </div>
+
+                        <div class="d-flex">
+                          <p class="small text-color m-0">
+                            {{val.message}}
+                          </p>
+                          <ng-container *ngIf="val.is_read ==1">
+                            <svg class="ml-2" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="check-double"
+                              width="11px" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                              <path fill="#28a745"
+                                d="M444.96 159l-12.16-11c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L131.77 428 31.42 329c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L3.04 340C1.01 342.67 0 345.67 0 349s1.01 6 3.04 8l120.62 119c2.69 2.67 5.57 4 8.62 4s5.92-1.33 8.62-4l304.07-300c2.03-2 3.04-4.67 3.04-8s-1.02-6.33-3.05-9zM127.17 284.03c2.65 2.65 5.48 3.97 8.47 3.97s5.82-1.32 8.47-3.97L365.01 63.8c1.99-2 2.99-4.65 2.99-7.96s-1-6.29-2.99-8.94l-11.96-10.93c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97L135.14 236.34l-72.25-72.03c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97l-11.96 10.93C33 177.89 32 180.87 32 184.18s1 5.96 2.99 7.95l92.18 91.9z"
+                                class="ml-2"></path>
+                            </svg>
+                          </ng-container>
+                          <ng-container *ngIf="val.is_read ==0">
+                            <svg aria-hidden="true" class="ml-2" focusable="false" data-prefix="fal" data-icon="check-double"
+                              width="11px" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                              <path fill="#6f7971a8"
+                                d="M444.96 159l-12.16-11c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L131.77 428 31.42 329c-2.03-2.67-4.72-4-8.11-4s-6.08 1.33-8.11 4L3.04 340C1.01 342.67 0 345.67 0 349s1.01 6 3.04 8l120.62 119c2.69 2.67 5.57 4 8.62 4s5.92-1.33 8.62-4l304.07-300c2.03-2 3.04-4.67 3.04-8s-1.02-6.33-3.05-9zM127.17 284.03c2.65 2.65 5.48 3.97 8.47 3.97s5.82-1.32 8.47-3.97L365.01 63.8c1.99-2 2.99-4.65 2.99-7.96s-1-6.29-2.99-8.94l-11.96-10.93c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97L135.14 236.34l-72.25-72.03c-1.99-2.65-4.64-3.97-7.97-3.97s-5.98 1.32-7.97 3.97l-11.96 10.93C33 177.89 32 180.87 32 184.18s1 5.96 2.99 7.95l92.18 91.9z"
+                                class=""></path>
+                            </svg>
+                          </ng-container>
+                        </div>
+
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+
+              </ng-container>
+            </div>
+
+            <ng-container *ngIf="chats?.length == 0">
+              <div class="d-flex align-items-center">
+                No chats Found
+              </div>
+            </ng-container>
+          </div>
+          <!-- <div class="d-flex justify-content-end">
+                        <i class="far fa-plus-square more-add text-success"></i>
+                    </div> -->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-6 col-md-8 p-0 d-none d-md-block" [ngClass]="status ? 'd-block' : 'd-none'">
+      <ng-container *ngIf="isToggle">
+        <div class="d-flex align-items-center justify-content-between bg-light py-4 px-4" *ngIf="showMessage">
+          <div class="d-flex align-items-center">
+            <!-- <img class="profile-pic" src="./assets/images/profile-3.jpg"> -->
+            <div class="position-relative">
+              <!-- <i
+                  *ngIf="current_user.is_online == 1"
+                  class="fas fa-circle"
+              ></i> -->
+              <div class="msg-img mr-2">
+                <img appLazyImg class="profile-pic rounded-circle" alt="Profile Image" *ngIf="current_user.image" [src]="
+                          current_user.image.substring(
+                              0,
+                              4
+                          ) != 'http'
+                              ? imgUrl +
+                                current_user.image
+                              : current_user.image
+                      " #profilePic (error)="
+                          profilePic.src =
+                              './assets/images/profile-3.jpg'
+                      " />
+                <img appLazyImg class="profile-pic rounded-circle" src="./assets/images/profile-3.jpg"
+                  *ngIf="!current_user.image" alt="Profile Image" />
+              </div>
+            </div>
+            <div class="pl-3">
+              <h6 class="text-dark m-0 text-capitalize">{{current_user.name}}</h6>
+              <p *ngIf="current_user.is_online==0" class="small text-secondary m-0">
+                <span class="d-inline-block mt-1 text-grey"> <i class="fas fa-circle pr-1"
+                  style="color:grey;font-size: 6px;"></i>Offline</span>
+              </p>
+              <p *ngIf="current_user.is_online==1" class="small text-secondary m-0">
+                <span class="d-flex mt-1 text-grey align-items-center"> <i class="fas fa-circle pr-1"
+                    style="color:#28a746a8;font-size: 6px;"></i> {{
+                    current_user.is_online == 1
+                        ? "On"
+                        : "Off"
+                }}line </span>
+              </p>
+            </div>
+          </div>
+
+          <div ngbDropdown>
+            <i class="fas fa-ellipsis-v cursor-pointer" ngbDropdownToggle></i>
+            <div ngbDropdownMenu>
+              <!-- <button ngbDropdownItem>Delete For Everyone</button> -->
+              <button *ngIf="currentChatRes?.blocked_status == 0" ngbDropdownItem (click)=blockChat()>Block</button>
+              <button *ngIf="currentChatRes?.blocked_status == 1" ngbDropdownItem (click)=blockChat()>UnBlock</button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem (click)=clearAllChat(current_user.id)>Clear Chat</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <hr class="m-0" *ngIf="showMessage">
+
+      <div class="overflow-auto messages-height p-4">
+        <ng-container *ngIf="!isToggle">
+          <div class="">
+
+            <div class="d-flex align-items-center my-4">
+              <label class=" mr-3">To:</label>
+              <div class="input-group search-head-group  mt-3 mt-lg-0">
+                <input autocomplete="off" type="text" name="keyword" [(ngModel)]="keywordSearch"
+                  (ngModelChange)="this.userQuestionUpdate.next($event)" class="form-control"
+                  placeholder="Type the name of person" (keyup.enter)="addKeyword()" />
+                <div *ngIf="allUser.length>0" class="drop-list-search">
+                  <div class="container" style="overflow-y: scroll;max-height: 400px;">
+                    <!-- (click)="displayMsgs(i, item.id)" [id]="i" -->
+                    <ul class="list-unstyled mb-1">
+                      <li *ngFor="let item of allUser;let i=index" (click)="setvalue(item,item.id)">
+                        {{item.first_name}} {{item.last_name}}
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-12 my-2">
+              <span *ngFor="let deleteKeyword of keywordArray; let i = index"
+                class="badge badge-primary bg-primary mr-2 px-2 py-1" style="border-radius: 30px;">{{deleteKeyword}}
+                <i class="fa fa-close pointer" (click)="removeKeyword(i)"></i>
+              </span>
+            </div>
+            <div class="overflow-auto p-4">
+              <div class="font-18-bold text-capitalize text-center">
+                Please select a message to continue
+                <br />
+                <span class="font-13 text-primary d-md-none ml-auto" (click)="status = !status">Select
+                  Chat</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isToggle">
+          <div class="d-flex align-items-center" [class.flex-row-reverse]="message.from_me" *ngFor="
+                    let message of currentChat">
+            <ng-container *ngIf="message.from_me == 1">
+              <div class="d-flex align-items-center my-3">
+
+
+                <!-- <img class="profile-pic" src="./assets/images/profile-2.jpg"> -->
+                <div class="message-detail ">
+                  <span
+                    class="chat-right-block  position-relative d-flex align-items-center justify-content-end">{{message.participant}}{{message.message}}</span>
+
+                  <div class="tooltiptext">
+                    <div class="btn-group" id="dropdownConfig" ngbDropdown role="group"
+                      aria-label="Button group with nested dropdown">
+                      <i class="fas fa-ellipsis-v cursor-pointer position-absolute px-2" style="
+                   background: #6fc587;left: 22px;border-radius: 50px;top: 0px;
+                " ngbDropdownToggle></i>
+                      <div class="dropdown-menu" aria-labelledby="dropdownConfig" ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="deleteChat(message.id,1)">Delete For Me</button>
+                        <button ngbDropdownItem (click)="deleteChat(message.id,2)">Delete For Everyone</button>
+                        <!-- <button ngbDropdownItem>Four!</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="message.from_me == 0">
+              <div class="d-flex flex-row-reverse align-items-center my-3">
+                <div class="message-detail">
+                  <span class="chat-left-block">{{message.participant}}{{message.message}}</span>
+                  <div class="tooltiptext">
+
+                    <div class="btn-group" id="dropdownConfig1" ngbDropdown role="group"
+                      aria-label="Button group with nested dropdown">
+                      <i class="fas fa-ellipsis-v cursor-pointer position-absolute px-2"
+                        style="background: black;left: 22px;border-radius: 50px;top: 0px;" ngbDropdownToggle></i>
+                      <div class="dropdown-menu" aria-labelledby="dropdownConfig1" ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="deleteChat(message.id,1)">Delete For Me</button>
+                        <!-- <button ngbDropdownItem>Four!</button> -->
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- <img class="profile-pic" src="./assets/images/profile-3.jpg" /> -->
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="isToggle">
+        <div *ngIf="showMessage" class="d-flex justify-content-center align-items-center bg-light p-4">
+          <input type="text" class="form-control mr-3" [(ngModel)]="newMessage"
+            (keyup)="$event.keyCode == 13 && sendMsg()" placeholder="Write Message . . .">
+          <i (click)="sendMsg()" class="fas fa-arrow-circle-right fa-2x text-success cursor-pointer"></i>
+        </div>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="isToggle">
+      <div class="col-lg-3 col-md-6 d-none d-lg-block p-0 border-left" *ngIf="showMessage">
+        <div class="overflow-auto profiles text-center p-5">
+          <div class="position-relative">
+            <!-- <i
+                    *ngIf="current_user.is_online == 1"
+                    class="fas fa-circle"
+                ></i> -->
+            <div class="msg-img mr-2">
+              <img appLazyImg class="profile-information rounded-circle" height="100%" width="100%" alt="Profile Image"
+                *ngIf="current_user.image" [src]="
+                            current_user.image.substring(
+                                0,
+                                4
+                            ) != 'http'
+                                ? imgUrl +
+                                  current_user.image
+                                : current_user.image
+                        " #profilePic (error)="
+                            profilePic.src =
+                                './assets/images/profile-3.jpg'
+                        " />
+              <img appLazyImg class="profile-information rounded-circle" height="100%" width="100%"
+                src="./assets/images/profile-3.jpg" *ngIf="!current_user.image" alt="Profile Image" />
+            </div>
+          </div>
+          <h5 class="mt-3 text-capitalize">{{current_user?.name}}</h5>
+          <div class="d-flex align-items-center mt-4">
+            <i class="fas fa-phone-alt text-success " aria-hidden="true"></i>
+            <label class="mb-0 ml-2 font-weight-bold text-secondary">+{{current_user?.phone}}</label>
+          </div>
+          <div class="d-flex align-items-center mt-2">
+            <i class="fas fa-envelope text-success"></i>
+            <label class="mb-0 ml-2 text-secondary font-weight-bold">{{current_user?.email}}</label>
+          </div>
+          <!-- <div class="mt-3">
+                    <h5>Bio</h5>
+                    <p class="mb-0 ml-2">{{result?.description}}</p>
+                </div> -->
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

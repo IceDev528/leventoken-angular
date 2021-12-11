@@ -1,0 +1,86 @@
+<!-- header-section-start -->
+<div class="sign-up">
+  <header class="leven-header">
+      <nav class="navbar navbar-expand-lg navbar-light he pt-3 pb-3">
+          <div class="container">
+              <a class="navbar-brand img-brand" href="#"><img src="../../assets/images/leven_logo.png" alt="leven-logo"></a>
+          </div>
+      </nav>
+  </header>
+  <!-- header-section-end -->
+  <!-- leaven-create-account-section-start -->
+  <section class="create-account">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-5">
+
+                  <div class="login-left">
+                    <form [formGroup]="loginForm" (Submit)="loginUser()">
+                      <div class="send-messagesss pt-4 pb-5 mb-5">
+
+                          <div class="leave-message">
+                              <h4>Login</h4>
+                          </div>
+
+                          <div class="mb-3">
+                              <input formControlName="email" type="text" class="form-control form-clasic mb-4" id="formGroupExampleInput" placeholder="Email">
+                              <div *ngIf="f.email.errors" class="invalid-feedback d-flex align-items-center">
+                                <div class="d-flex align-items-center" *ngIf="login_error && f.email.errors?.required">
+                                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                  <span class="pl-1">Please enter the email</span>
+                                </div>
+                                <div class="d-flex align-items-center" *ngIf="login_error && f.email.errors.email">
+                                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                  <span class="pl-1">Please enter the valid email id</span>
+                                </div>
+                              </div>
+                            </div>
+
+                          <div class="mb-3 login-form">
+
+                              <input type="{{passwordInputType}}" formControlName="password" class="form-control form-clasic" id="formGroupExampleInput" placeholder="Password">
+                              <!-- <i class="toggle-password far fa-eye "></i> -->
+
+                              <ng-container *ngIf="passwordInputType =='password'">
+                                <span class="toggel-eye" (click)="passwordInputType = 'text'">
+                              <i class="toggle-password far fa-eye-slash "></i>
+                                 </span>
+                               </ng-container>
+                               <ng-container *ngIf="passwordInputType !='password'">
+                                <span class="toggel-eye" (click)="passwordInputType = 'password'">
+                                  <i class="toggle-password far fa-eye "></i>
+                                </span>
+                              </ng-container>
+
+                              <div *ngIf="f.password.errors" class="col-12 invalid-feedback d-flex align-items-center p-0">
+                                <div class="d-flex align-items-center" *ngIf="login_error && f.password.errors?.required">
+                                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                  <span class="pl-1">Please enter password</span>
+                                </div>
+                                </div>
+                              <a [routerLink]="['/forgotpass']">
+                                  <p class="forget text-end mt-2">Forget Password?</p>
+                              </a>
+
+                          </div>
+
+                          <div class="login d-flex justify-content-between align-items-center">
+                              <button (click)="loginUser()" [disabled]="saveLoading" class="btn common-btn" type="submit">LOG IN</button>
+                              <p class="mb-0">Don't have an Account? <a [routerLink]="['/signup']"><span>Sign Up </span></a></p>
+                          </div>
+                      </div>
+                    </form>
+
+                  </div>
+              </div>
+
+              <div class="col-lg-7">
+                  <div class="image-vecter">
+                      <img src="../../assets/images/signup_login_vector.png" alt="signup_login_vector">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+<!-- leven-create-account-sectiom-end -->

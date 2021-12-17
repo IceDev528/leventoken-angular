@@ -1,59 +1,89 @@
 <!-- header-section-start -->
 <header class="leven-header">
   <nav class="navbar navbar-expand-lg navbar-light he pt-3 pb-3">
-      <div class="container">
-          <a class="navbar-brand img-brand" href="#"><img src="../../assets/images/leven_logo.png" alt="leven-logo"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse leaves-ul" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" (click)="about()">About</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" (click)="audit()">Audit</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" (click)="presale()">Presale</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" (click)="contact()">Contact</a>
-                  </li>
-              </ul>
-              <div class="social-icon">
-                  <img src="../../assets/images/skype.png" alt="skype" class="px-2">
-                  <img src="../../assets/images/twitter.png" alt="twitter" class="px-2 me-3">
-                  <ng-container *ngIf="!this.loggedIn">
-                    <a [routerLink]="['/signup']"><button  class="btn common-btn" type="submit">SIGN UP/LOGIN</button></a>
-
-                  </ng-container>
-                  <ng-container *ngIf="this.loggedIn">
-                    <ng-container *ngIf="user?.profile_pic">
-                      <a routerLink="/profile" class="profile-img">
-                      <img [src]="imgUrl+user.profile_pic">
-                      </a>
-                    </ng-container>
-                    <!-- <a routerLink="/profile" class="profile-img">
+    <div class="container">
+      <a class="navbar-brand img-brand" href="#"
+        ><img src="../../assets/images/leven_logo.png" alt="leven-logo"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse leaves-ul"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="about()">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="audit()">Audit</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://levenproject.org/"
+              target="_blank"
+              class="nav-link active"
+              >Presale</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" (click)="contact()"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div class="social-icon">
+          <a href="https://t.me/leventoken" target="_blank"
+            ><img src="../../assets/images/skype.png" alt="skype" class="px-2"
+          /></a>
+          <a href="https://twitter.com/ProjectLeven" target="_blank"
+            ><img
+              src="../../assets/images/twitter.png"
+              alt="twitter"
+              class="px-2 me-3"
+          /></a>
+          <!-- <img src="../../assets/images/skype.png" alt="skype" class="px-2">
+                  <img src="../../assets/images/twitter.png" alt="twitter" class="px-2 me-3">  -->
+          <ng-container *ngIf="!this.loggedIn">
+            <a [routerLink]="['/signup']"
+              ><button class="btn common-btn" type="submit">
+                SIGN UP/LOGIN
+              </button></a
+            >
+          </ng-container>
+          <ng-container *ngIf="this.loggedIn">
+            <ng-container *ngIf="user?.profile_pic">
+              <a routerLink="/profile" class="profile-img">
+                <img [src]="imgUrl + user.profile_pic" />
+              </a>
+            </ng-container>
+            <!-- <a routerLink="/profile" class="profile-img">
                       <img [src]="user?.profile_pic?imgUrl+user.profile_pic:'../../assets/images/profile_header.png'">
                     </a> -->
-                    <ng-container *ngIf="!user?.profile_pic">
-                      <a routerLink="/profile" class="text-dark">
-                        <span class="name-profile">{{userNameShort}}</span>
-                      </a>
-                    </ng-container>
-                    <!-- <a routerLink="/profile" class="text-dark">
+            <ng-container *ngIf="!user?.profile_pic">
+              <a routerLink="/profile" class="text-dark">
+                <span class="name-profile">{{ userNameShort }}</span>
+              </a>
+            </ng-container>
+            <!-- <a routerLink="/profile" class="text-dark">
                       <span class="name-profile">{{userNameShort}}</span>
                     </a> -->
-
-
-                  </ng-container>
-              </div>
-          </div>
+          </ng-container>
+        </div>
       </div>
+    </div>
   </nav>
 </header>
 <!-- header-section-end -->

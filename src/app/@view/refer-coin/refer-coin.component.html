@@ -1,92 +1,157 @@
 <!-- total-refler-secton-start -->
 <section class="total-refrel">
   <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-              <h3 class="refrel-ern pb-2">Refer & Earn More Free Coins</h3>
-              <div class="get-coinn get-coinn-1 mt-5 position-relative mb-5">
-                  <ul class="d-flex justify-content-evenly align-items-center pt-4 pb-4">
-                      <li class="list-1">Copy the Refferal Code</li>
-                      <li class="list-2">Send it to your Friends/Relatives</li>
-                      <li class="list-3">When they SignUp you get 50 Coins</li>
-                  </ul>
-              </div>
-
-          </div>
-          <div class="col-md-12 text-center ml-auto mr-auto">
-              <div class="row reffer-custom">
-                  <div class="col-lg-5">
-                      <div class="reffer-div text-center">
-                          <div class="copy-content">
-                              <p class="mb-0 d-flex align-items-center justify-content-between">{{user?.ref_code}}<span (click)="copy(user?.ref_code)"> <i class="far fa-copy"></i></span></p>
-
-                          </div>
-                          <div class="row mt-3">
-                            <div class="col-md-6 text-start">
-                              <input type="text" [(ngModel)]="email" class="form-control mb-1" value="" placeholder="emails" #emailInput (keyup.enter)="selectEvent()">
-                              <ng-container *ngIf="showError">
-                                <span class="text-danger" *ngIf="!email">
-                                  Please enter Email
-                                </span>
-                                <span *ngIf="notValidEmail && email && !email.toLowerCase().match(emailPattern)" class="text-danger">
-                                    Please enter valid Email
-                                </span>
-                              </ng-container>
-                              <div class="col-12 my-2 px-0">
-                                <span *ngFor="let selected_user of selectedUserData;let i = index"
-                                    class="badge badge-secondary bg-secondary mr-2 mx-1 px-2 py-1"
-                                    data-id="selected_user.id">
-                                    <span class="text-white" title="{{selected_user.email}}">
-                                        {{ selected_user.email ? selected_user.email : "-" }}
-                                    </span>
-                                    <i class="fa fa-times remove-selected-user text-white pl-2 cursor-pointer"
-                                        (click)="removeUser(selected_user)"></i>
-                                </span>
-                            </div>
-                            </div>
-                            <div class="col-md-6">
-                              <button type="button" (click)="shareEmail()" [disabled]="!selectedUserData.length" class="btn common-btn">SHARE VIA MAIL</button>
-                            </div>
-                          </div>
-
-                      </div>
-                  </div>
-                  <div class="col-lg-3">
-                      <div class="total-lvln text-center">
-                          <p class="mb-0 pt-4">Total earned coins</p>
-                          <h4>{{totalCoins}} LVL</h4>
-                          <p class="pt-0 mb-2">From</p>
-                          <h3 class="pb-4">100M LVL</h3>
-                      </div>
-                  </div>
-              </div>
-
-          </div>
-          <div class="col-lg-12">
-              <div class="totall-refrels mt-5 mb-4 pt-3 pb-2">
-                  <h4>Total Refferals</h4>
-              </div>
-              <h4></h4>
-          </div>
-          <ng-container *ngFor="let referal of referals">
-              <div class="col-lg-4 mb-3">
-                <div class="reffrel-id pt-2 pb-2 d-flex justify-content-around align-items-center">
-                    <div class="lucinda">
-                        <img [src]="referal.referred_to.profile_pic?imgUrl+referal.referred_to.profile_pic:'../../assets/images/profile_big.png'" alt="img_one">
-                        <div class="date">
-                            <p class="pb-2">{{referal.referred_to.name}}</p>
-                            <span>{{referal.created_at |date:'dd/MM/yyyy'}}</span>
-                        </div>
-                    </div>
-                    <div class="fiften-lvl">
-                        <small>Earn</small>
-                        <p>50 <span>LVL</span></p>
-                    </div>
-                </div>
-            </div>
-          </ng-container>
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="refrel-ern pb-2">Refer & Earn More Free Coins</h3>
+        <div class="get-coinn get-coinn-1 mt-5 position-relative mb-5">
+          <ul
+            class="d-flex justify-content-evenly align-items-center pt-4 pb-4"
+          >
+            <li class="list-1">Copy the Refferal Code</li>
+            <li class="list-2">Send it to your Friends/Relatives</li>
+            <li class="list-3">When they SignUp you get 50 Coins</li>
+          </ul>
+        </div>
       </div>
+      <div class="col-md-12 text-center ml-auto mr-auto">
+        <div class="row reffer-custom">
+          <div class="col-lg-5">
+            <div class="reffer-div text-center">
+              <div class="copy-content">
+                <p
+                  class="mb-0 d-flex align-items-center justify-content-between"
+                >
+                  {{ user?.ref_code
+                  }}<span (click)="copy(user?.ref_code)">
+                    <i class="far fa-copy"></i
+                  ></span>
+                </p>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6 text-start">
+                  <input
+                    type="text"
+                    [(ngModel)]="email"
+                    class="form-control mb-1"
+                    value=""
+                    placeholder="emails"
+                    #emailInput
+                    (keyup.enter)="selectEvent()"
+                  />
+                  <ng-container *ngIf="showError">
+                    <span class="text-danger" *ngIf="!email">
+                      Please enter Email
+                    </span>
+                    <span
+                      *ngIf="
+                        notValidEmail &&
+                        email &&
+                        !email.toLowerCase().match(emailPattern)
+                      "
+                      class="text-danger"
+                    >
+                      Please enter valid Email
+                    </span>
+                  </ng-container>
+                  <div class="col-12 my-2 px-0">
+                    <span
+                      *ngFor="
+                        let selected_user of selectedUserData;
+                        let i = index
+                      "
+                      class="
+                        badge badge-secondary
+                        bg-secondary
+                        mr-2
+                        mx-1
+                        px-2
+                        py-1
+                      "
+                      data-id="selected_user.id"
+                    >
+                      <span
+                        class="text-white"
+                        title="{{ selected_user.email }}"
+                      >
+                        {{ selected_user.email ? selected_user.email : "-" }}
+                      </span>
+                      <i
+                        class="
+                          fa fa-times
+                          remove-selected-user
+                          text-white
+                          pl-2
+                          cursor-pointer
+                        "
+                        (click)="removeUser(selected_user)"
+                      ></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <button
+                    type="button"
+                    (click)="shareEmail()"
+                    [disabled]="!selectedUserData.length"
+                    class="btn common-btn"
+                  >
+                    SHARE VIA MAIL
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="total-lvln text-center">
+              <p class="mb-0 pt-4">Total earned coins</p>
+              <h4>{{ totalCoins }} Leven</h4>
+              <p class="pt-0 mb-2">From</p>
+              <h3 class="pb-4">100M Leven</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="totall-refrels mt-5 mb-4 pt-3 pb-2">
+          <h4>Total Refferals</h4>
+        </div>
+        <h4></h4>
+      </div>
+      <ng-container *ngFor="let referal of referals">
+        <div class="col-lg-4 mb-3">
+          <div
+            class="
+              reffrel-id
+              pt-2
+              pb-2
+              d-flex
+              justify-content-around
+              align-items-center
+            "
+          >
+            <div class="lucinda">
+              <img
+                [src]="
+                  referal.referred_to.profile_pic
+                    ? imgUrl + referal.referred_to.profile_pic
+                    : '../../assets/images/profile_big.png'
+                "
+                alt="img_one"
+              />
+              <div class="date">
+                <p class="pb-2">{{ referal.referred_to.name }}</p>
+                <span>{{ referal.created_at | date: "dd/MM/yyyy" }}</span>
+              </div>
+            </div>
+            <div class="fiften-lvl">
+              <small>Earn</small>
+              <p>50 <span>Leven</span></p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
   </div>
-
 </section>
 <!-- total-refrel-section-ennd -->

@@ -39,7 +39,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: "leven-token/:countryId/:stateId/:cityId",
+        path: "leven-token/:city_name/:state_name/:country_name",
         loadChildren: () =>
           import(
             "../../../@view/leven-token-posting/leven-token-posting.module"

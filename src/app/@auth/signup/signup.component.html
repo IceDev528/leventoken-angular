@@ -104,7 +104,43 @@
                           </div>
                       </div>
                       <div class="mb-3">
-                        <input type="text" formControlName="referred_by" class="form-control form-clasic" id="referedBy" placeholder="Enter referal cod If any">
+                        <input type="text" formControlName="referred_by" class="form-control form-clasic" id="referedBy" placeholder="Enter referal code">
+                        <div *ngIf="signUpFormError && f.referred_by.errors" class="invalid-feedback d-flex align-items-center">
+                          <div class="d-flex align-items-center" *ngIf="f.referred_by.errors?.required">
+                            <i class="fa fa-info-circle mx-1" aria-hidden="true"></i>
+                            <span class="pl-1">Please enter the referal code</span>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="my-3">
+                      <form [formGroup]="aFormGroup" class="g-recaptcha-contact ">
+                        <!-- <ngx-recaptcha2
+                        [siteKey]="siteKey"
+                        (reset)="handleReset()"
+                        (expire)="handleExpire()"
+                        (load)="handleLoad()"
+                        (success)="handleSuccess($event)"
+                        [useGlobalDomain]="false"
+                        formControlName="recaptcha"
+                        >
+                      </ngx-recaptcha2> -->
+                      <re-captcha
+                      formControlName="recaptcha"
+                        (resolved)="resolved($event)"
+                        siteKey="{{siteKey}}"
+                        (expire)="handleExpire()"
+
+                      ></re-captcha>
+                      <div>
+
+                      </div>
+                      <span *ngIf="!aFormGroup.value.recaptcha && !this.captchaKey" class="d-block text-danger text-left fs-12">{{errorCapcha}}</span>
+                      <!-- <re-captcha
+                          (resolved)="resolved($event)"
+                          siteKey="YOUR_SITE_KEY"
+                        ></re-captcha> -->
+
+                      </form>
                     </div>
                       <div class="login d-flex justify-content-between align-items-center">
                           <button (click)="signupUser()" [disabled]="saveLoading" class="btn common-btn" type="submit">SIGN UP</button>

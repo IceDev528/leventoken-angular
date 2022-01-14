@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/@core/@services/common.service';
 import { DataUpdateService } from 'src/app/@core/@services/data.service';
@@ -8,7 +9,7 @@ import { CustomToastService } from 'src/app/@core/@services/toast.service';
 import { SpaceValidators } from 'src/app/@shared/@validators/space.validator';
 import { CustomAuthService } from '../auth-module.service';
 import { SignupRequest } from './signup.model';
-
+import { recaptchaKey } from 'src/app/@core/@utills/constant';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -27,21 +28,71 @@ export class SignupComponent implements OnInit {
   countryabbr: any;
   user: any;
   saveLoading1: boolean;
-shownumber:boolean=false;
+  shownumber:boolean=false;
+  siteKey=recaptchaKey.siteKey;
+  errorCapcha:any
+ aFormGroup: FormGroup;
+ captchaKey:any='';
+ type='';
   constructor(
     private fb: FormBuilder,
     private cs: CommonService,
     private customAuthService: CustomAuthService,
     private toastService: CustomToastService,
     private update: DataUpdateService,
-    private dataService: DataService
-  ) { }
+    private dataService: DataService,
+    // private reCaptchaV3Service: ReCaptchaV3Service,
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.createForms();
     setTimeout(()=>{
       this.shownumber=true;
     },100)
+    this.aFormGroup = this.fb.group({
+      recaptcha: ['', Validators.required]
+    });
+
+    this.getToken();
+  }
+  handleReset(){
+
+  }
+  handleExpire(){
+    this.captchaKey='';
+  }
+  handleSuccess(event:any){
+    console.log('ngxrecaptcha',event);
+
+  }
+  handleLoad(){
+
+  }
+  resolved(event:any){
+    console.log('recaptcha',event);
+    this.captchaKey =event;
+  }
+  getToken(){
+    // this.reCaptchaV3Service.execute(this.siteKey, 'homepage', (token) => {
+    //   console.log('This is your token: ', token);
+    // }, {
+    //     useGlobalDomain: false
+    // });
+  }
+  public send(form: NgForm): void {
+    if (form.invalid) {
+      for (const control of Object.keys(form.controls)) {
+        form.controls[control].markAsTouched();
+      }
+      return;
+    }
+
+    // this.recaptchaV3Service.execute('importantAction')
+    // .subscribe((token: string) => {
+    //   console.debug(`Token [${token}] generated`);
+    // });
   }
 
   ngOnDestroy() {
@@ -77,7 +128,9 @@ shownumber:boolean=false;
           Validators.pattern(/^(?=(.*\d.*){1,})(?=(.*[a-zA-Z].*){1,})/),
         ]),
       ],
-      referred_by:[''],
+      referred_by:['', Validators.compose([
+        Validators.required,
+      ])],
       confirm_password: [''],
     });
   }
@@ -110,7 +163,11 @@ shownumber:boolean=false;
         this.saveLoading = false;
         this.signUpFormError = true;
         return;
-      } else {
+      }else if (!this.captchaKey) {
+        this.errorCapcha = "Captcha required"
+        this.saveLoading=false;
+        return
+      }else {
         this.mustMatch = false;
         this.signUpFormError=false;
       }
@@ -122,7 +179,8 @@ shownumber:boolean=false;
         country_code: this.signUpForm.value.country_code,
         password: this.signUpForm.value.password,
         phone_no: this.signUpForm.value.phone_no,
-        referred_by:this.signUpForm.value.referred_by
+        referred_by:this.signUpForm.value.referred_by,
+        secret_code:this.captchaKey
       };
 
       const signupSub = this.customAuthService.signUp(request).subscribe(

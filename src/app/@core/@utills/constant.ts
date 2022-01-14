@@ -24,6 +24,29 @@ export const UPLOAD_IMAGE_URL = 'https://leventoken.com:3001/Upload/file_upload'
 // export const LARGE_IMAGE_URL = '/images/';
 export const MEDIUM_IMAGE_URL = 'https://leventoken.blob.core.windows.net/uploads/medium';
 export const SMALL_IMAGE_URL = 'https://leventoken.blob.core.windows.net/uploads/small/';
+export const recaptchaKey= {
+  siteKey: '6LeGgewdAAAAAG30RGIo4Q1Zho43IE23qB6VPufq',
+}
+
+
+// // // //staging urls
+
+// export const BASE_URL = 'http://dev.leventoken.com:3002/';
+// export const MEDIA_URL = 'https://app-transfer.com:3006/api/image?filename=';
+// export const IMAGE_URL = 'https://leventoken.blob.core.windows.net/uploads/original/';
+// export const UPLOAD_IMAGE_URL = 'http://dev.leventoken.com:3002/Upload/file_upload';
+
+// // export const LARGE_IMAGE_URL = '/images/';
+// export const MEDIUM_IMAGE_URL = 'https://leventoken.blob.core.windows.net/uploads/medium';
+// export const SMALL_IMAGE_URL = 'https://leventoken.blob.core.windows.net/uploads/small/';
+// export const recaptchaKey= {
+//   siteKey: '6LeGgewdAAAAAG30RGIo4Q1Zho43IE23qB6VPufq',
+// }
+
+
+
+
+
 // export const SOCKET_BASE_URL = '';
 // export const GOOGLE_API_KEY =
 //   '';

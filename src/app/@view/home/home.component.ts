@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 // import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -24,8 +25,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('about') about: any;
   @ViewChild('contact') contact: any;
   @ViewChild('audit') audit: any;
-
-
+  videoUrl='https://www.youtube.com/embed/Ml3WsQ41GWs?rel=0'
+  safeVideoUrl:any='';
 
   token: string;
   contactUsForm:FormGroup;
@@ -149,9 +150,11 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     // private router: Router,
     // private dataService: DataService,
+    private _sanitizer: DomSanitizer,
     private update: DataUpdateService, private apiService: CustomApiService,
 
   ) {
+    this.safeVideoUrl= this._sanitizer.bypassSecurityTrustResourceUrl(this.videoUrl)
     this.token = this.route.snapshot.paramMap.get('token') as string;
   }
 

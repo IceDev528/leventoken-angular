@@ -16,7 +16,7 @@ import { ProfileComponent } from './profile.component';
     ReactiveFormsModule,
     Ng2TelInputModule,
     // GooglePlaceModule,
-    NumberModule
+    NumberModule,
   ]
 })
 export class ProfileModule { }

@@ -45,6 +45,13 @@ const routes: Routes = [
             "../../../@view/leven-token-posting/leven-token-posting.module"
           ).then((m) => m.LevenTokenPostingModule),
       },
+      {
+        path:'leven_token_story/:crypto_name',
+        loadChildren: () =>
+            import('../../../@view/leven-token-story/leven-token-story.module').then(
+              (m) => m.LevenTokenStoryModule
+            ),
+      },
       // {
       //   path: 'terms-of-use',
       //   loadChildren: () =>

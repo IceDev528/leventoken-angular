@@ -8,7 +8,8 @@ export interface SignupRequest {
   // device_type: number;
   phone_no: number;
   country_code: string;
-  referred_by:string
+  referred_by:string,
+  secret_code:string
 }
 
 export interface VerifyPhoneRequest {

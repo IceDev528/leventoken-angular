@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SignupComponent } from './signup.component';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { Ng2TelInputModule } from 'ng2-tel-input';
 // import { Ng2TelInputModule } from 'ng2-tel-input';
 import { NumberModule } from 'src/app/@shared/@directives/number/number.module';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { Ng2TelInputModule } from 'ng2-tel-input';
+import { SignupComponent } from './signup.component';
 
 @NgModule({
   declarations: [SignupComponent],
@@ -21,7 +21,9 @@ import { Ng2TelInputModule } from 'ng2-tel-input';
     NumberModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
-  ]
+    // NgxCaptchaModule,
+    RecaptchaModule
+  ],
+
 })
 export class SignUpModule { }

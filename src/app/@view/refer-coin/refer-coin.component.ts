@@ -29,6 +29,7 @@ export class ReferCoinComponent implements OnInit, OnDestroy {
   notValidEmail:boolean=false;
   email:any='';
   totalCoins:any;
+  total_tokens:any;
   emailPattern=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   constructor(
     private apiService: CustomApiService,
@@ -68,6 +69,7 @@ export class ReferCoinComponent implements OnInit, OnDestroy {
         console.log(res);
         this.referals=res.data.data
         this.totalCoins=res.data.total_coins
+        this.total_tokens=res.data.total_tokens
       });
     this.subscriptions.push(totalRef);
   }
@@ -141,5 +143,17 @@ export class ReferCoinComponent implements OnInit, OnDestroy {
       this.selectedUserData=[];
 
     })
+  }
+
+  getShortName(Username:string){
+      let name =Username.split(' ')
+      let fChar=name[0][0];
+      let lChar='';
+      if(name[1]){
+        lChar=name[1][0]
+      }
+      let userNameShort= fChar + lChar;
+      userNameShort= userNameShort.toUpperCase();
+      return userNameShort
   }
 }

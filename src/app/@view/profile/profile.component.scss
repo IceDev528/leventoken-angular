@@ -2,7 +2,7 @@
 
 .social-icon img {
   width: 100%;
-  max-width: 42px;
+  max-width: 42px !important;
 }
 
 .leven-header {
@@ -30,9 +30,7 @@
   color: unset;
 }
 
-
 /* header-style-end */
-
 
 /* email-style-start */
 
@@ -68,7 +66,7 @@
   bottom: 29px;
   font-weight: 500;
   right: 24px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 6px #0000001a;
   border-radius: 50%;
   width: 28px;
@@ -77,7 +75,7 @@
 }
 
 .lvl-coin p {
-  color: #BF38E6;
+  color: #bf38e6;
   font-weight: 600;
   margin-bottom: 0px;
 }
@@ -145,7 +143,7 @@
 }
 
 .clasical-name {
-  background: #FFFFFF 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 6px #0000001a;
   border-radius: 10px;
   cursor: pointer !important;
@@ -229,7 +227,7 @@
 }
 
 .list-modal ul li::after {
-  content: url('../../../assets/images/circle.png');
+  content: url("../../../assets/images/circle.png");
   display: block;
   position: absolute;
   top: 0px;
@@ -251,7 +249,7 @@
 
 .copy-content {
   padding: 9px;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #e5e5e5;
   border-radius: 4px;
 }
 
@@ -275,8 +273,8 @@
 
 .boder-element {
   border: 1px solid;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #E5E5E5;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e5e5e5;
   border-radius: 4px;
 }
 
@@ -316,7 +314,8 @@ button.btn-close {
 //   right: 10px;
 //   top: 10px;
 // }
-i.toggle-password.far.fa-eye,i.toggle-password.far.fa-eye-slash {
+i.toggle-password.far.fa-eye,
+i.toggle-password.far.fa-eye-slash {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -328,43 +327,43 @@ i.toggle-password.far.fa-eye,i.toggle-password.far.fa-eye-slash {
   max-width: 60px;
   height: 49px;
   margin: 8px;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #DEE2E6;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dee2e6;
   border-radius: 10px;
 }
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
-.email_disable{
+.email_disable {
   pointer-events: none;
 }
 @media screen and (max-width: 414px) {
   .lvl-coin {
-      width: 100%;
-      max-width: 250px;
+    width: 100%;
+    max-width: 250px;
   }
   .modal-title {
-      font-size: 16px;
+    font-size: 16px;
   }
   .lvl-coin h4 {
-      font-size: 24px;
+    font-size: 24px;
   }
   .send-messagesss {
-      padding-left: 0px!important;
-      padding-right: 0px!important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
   .list-modal ul::before {
-      left: 27px;
+    left: 27px;
   }
   .list-modal ul {
-      margin-left: 10px;
+    margin-left: 10px;
   }
   .list-modal ul li {
-      font-size: 12px;
-      padding-left: 0px;
+    font-size: 12px;
+    padding-left: 0px;
   }
   .list-modal ul li::after {
-      top: -8px;
+    top: -8px;
   }
 }
 
@@ -381,3 +380,21 @@ span.name-profile {
   cursor: pointer;
 }
 /* email-style-end */
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+}
+.text-primary {
+  color: #462ed9 !important;
+}
+.social-icon-nft{
+  img{
+    width: 52px;
+    height: 38px;
+  }
+}
+.cursor-copy{
+  cursor: copy;
+}

@@ -65,6 +65,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   optRequested:boolean=false;
   newImgUrl:any='';
   userNameShort:any='';
+  isLoader:boolean=false;
   constructor(
     private profileService: ProfileService,
     private apiService:CustomApiService,
@@ -155,7 +156,11 @@ this.sendOtp(content,modal,false);
 
   uploadImg(event:any,isSave:any){
     console.log(event);
+
     let file = <File>event.target.files[0];
+    if(file){
+      this.isLoader=true;
+    }
     const formData: FormData = new FormData();
     formData.append('file', file);
     this.profileService.uploadPic(formData).subscribe(
@@ -163,6 +168,7 @@ this.sendOtp(content,modal,false);
         // this.toastService.showSuccess(res.message,'')
         if(isSave){
           this.profileData.profile_pic =res.data.file_url;
+          this.isLoader=false;
           let payload = {
             profile_pic: res.data.file_url,
           };
@@ -193,6 +199,7 @@ this.sendOtp(content,modal,false);
           );
         }else{
           this.newImgUrl=res.data.file_url;
+          this.isLoader=false;
         }
 
 
@@ -301,6 +308,10 @@ this.sendOtp(content,modal,false);
       ],
       // country_abv: ["" ? "" : "", []],
       // country_code: ["" ? "" : "", []],
+      wallet_address:[
+        this.profileData?.wallet_address,Validators.compose([
+        ])
+      ],
       email: new FormControl(
         {value:this.profileData?.email ? this.profileData.email : '',disabled:this.profileData?.email_verified?true:false},
         Validators.compose([
@@ -435,7 +446,22 @@ this.sendOtp(content,modal,false);
 
   copy(val: string){
     let msg = val;
-    navigator.clipboard.writeText(msg)
+    // navigator.clipboard.writeText(msg)
+    if (navigator.clipboard && window.isSecureContext) {
+     navigator.clipboard.writeText(msg);
+  } else {
+      const urlBox = document.createElement('textarea');
+      urlBox.style.position = 'fixed';
+      urlBox.style.left = '0';
+      urlBox.style.top = '0';
+      urlBox.style.opacity = '0';
+      urlBox.value = msg;
+      document.body.appendChild(urlBox);
+      urlBox.focus();
+      urlBox.select();
+      document.execCommand('copy')
+      document.body.removeChild(urlBox);
+  }
     this.toastService.showSuccess('Copied to clipboard.', '');
   }
 

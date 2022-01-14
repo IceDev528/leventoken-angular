@@ -24,11 +24,11 @@
                 >
                   {{ user?.ref_code
                   }}<span (click)="copy(user?.ref_code)">
-                    <i class="far fa-copy"></i
+                    <i class="far fa-copy cursor-copy"></i
                   ></span>
                 </p>
               </div>
-              <div class="row mt-3">
+              <!-- <div class="row mt-3">
                 <div class="col-md-6 text-start">
                   <input
                     type="text"
@@ -99,15 +99,15 @@
                     SHARE VIA MAIL
                   </button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-lg-3">
             <div class="total-lvln text-center">
               <p class="mb-0 pt-4">Total earned coins</p>
-              <h4>{{ totalCoins }} Leven</h4>
+              <h4>{{ totalCoins }} LEVEN</h4>
               <p class="pt-0 mb-2">From</p>
-              <h3 class="pb-4">100M Leven</h3>
+              <h3 class="pb-4">{{total_tokens}} LEVEN</h3>
             </div>
           </div>
         </div>
@@ -131,16 +131,21 @@
             "
           >
             <div class="lucinda">
-              <img
-                [src]="
-                  referal.referred_to.profile_pic
-                    ? imgUrl + referal.referred_to.profile_pic
-                    : '../../assets/images/profile_big.png'
-                "
-                alt="img_one"
-              />
+              <ng-container *ngIf="referal.referred_to?.profile_pic">
+                <img
+                  [src]="imgUrl + referal.referred_to.profile_pic"
+                  alt="img_one name-profile"
+                />
+              </ng-container>
+              <ng-container *ngIf="!referal.referred_to?.profile_pic">
+                <a class="text-dark">
+                  <span class="name-profile">{{
+                    getShortName(referal.referred_to.name)
+                  }}</span>
+                </a>
+              </ng-container>
               <div class="date">
-                <p class="pb-2">{{ referal.referred_to.name }}</p>
+                <p class="pb-2 text-break">{{ referal.referred_to.name }}</p>
                 <span>{{ referal.created_at | date: "dd/MM/yyyy" }}</span>
               </div>
             </div>
@@ -150,6 +155,9 @@
             </div>
           </div>
         </div>
+      </ng-container>
+      <ng-container *ngIf="!referals.length">
+        <h4 class="text-center mt-5">No Refferals Found</h4>
       </ng-container>
     </div>
   </div>
